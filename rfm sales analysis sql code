@@ -59,8 +59,8 @@ DROP TABLE IF EXISTS #rfm
 		avg(sales) AvgMonetaryValue,
 		count(ORDERNUMBER) Frequency,
 		max(ORDERDATE) last_order_date,
-		(select max(ORDERDATE) from [dbo].[sales_data_sample]) max_order_date,
-		DATEDIFF(DD, max(ORDERDATE), (select max(ORDERDATE) from [dbo].[sales_data_sample])) Recency
+		(select max(ORDERDATE) from [sales_rfm].[dbo].[sale]) max_order_date,
+		DATEDIFF(DD, max(ORDERDATE), (select max(ORDERDATE) from [sales_rfm].[dbo].[sale])) Recency
 	from [sales_rfm].[dbo].[sale]
 	group by CUSTOMERNAME
 ),

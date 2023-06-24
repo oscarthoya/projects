@@ -71,7 +71,7 @@ srfm_calc as
 		NTILE(4) OVER (order by Recency desc) rfm_recency,
 		NTILE(4) OVER (order by Frequency) rfm_frequency,
 		NTILE(4) OVER (order by MonetaryValue) rfm_monetary
-	from rfm r
+	from srfm r
 )
 select 
 	c.*, rfm_recency+ rfm_frequency+ rfm_monetary as rfm_cell,
